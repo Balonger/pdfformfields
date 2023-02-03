@@ -112,7 +112,7 @@ def get_form_field_ids(input_pdf: str, output: str, pdftk_command: str = None):
         raise OSError(bash_error_message(pdftk_command))
 
 
-def generate_dictionary(input_pdf: str, verbose: bool = False):
+def generate_dictionary(input_pdf: str, verbose: bool = False, pdftk_command: str = None):
     """
     Super hacky function which creates a copy-pastable Python dictionary code.
     Good for increasing productivity.
@@ -135,7 +135,7 @@ def generate_dictionary(input_pdf: str, verbose: bool = False):
 
     """
     temp_form_field_dump = "temp_form_field_dump.txt"
-    get_form_field_ids(input_pdf, temp_form_field_dump)
+    get_form_field_ids(input_pdf, temp_form_field_dump, pdftk_command)
 
     with open(temp_form_field_dump) as fh:
         dict_str = ""
